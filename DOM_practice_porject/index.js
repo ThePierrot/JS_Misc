@@ -111,44 +111,44 @@ function tweetElementCreator(tweet) {
 }
 
 // renders
-function reRender(currentUser) {
+function reRender(user) {
   document.querySelector("textarea#tweet-input").value = "";
   document.querySelector("input[type=text]#follow-input").value = "";
   document.querySelector("input[type=text]#switch-user-input").value = "";
-  renderFollower(currentUser);
-  renderFollowing(currentUser);
-  renderTimeline(currentUser);
+  renderFollower(user);
+  renderFollowing(user);
+  renderTimeline(user);
 }
 
-function renderFollower(currentUser) {
+function renderFollower(user) {
   var list = document.querySelector("#follower-list");
   while (list.hasChildNodes()) {
     list.removeChild(list.lastChild);
   }
-  for (i = 0; i < currentUser.followers.length; i++) {
-    var child = followerElementCreator(currentUser.followers[i]);
+  for (i = 0; i < user.followers.length; i++) {
+    var child = followerElementCreator(user.followers[i]);
     list.appendChild(child);
   }
 }
 
-function renderFollowing(currentUser) {
+function renderFollowing(user) {
   var list = document.querySelector("#following-list");
   while (list.hasChildNodes()) {
     list.removeChild(list.lastChild);
   }
-  for (i = 0; i < currentUser.following.length; i++) {
-    var child = followerElementCreator(currentUser.following[i]);
+  for (i = 0; i < user.following.length; i++) {
+    var child = followerElementCreator(user.following[i]);
     list.appendChild(child);
   }
 }
 
-function renderTimeline(currentUser) {
+function renderTimeline(user) {
   var list = document.querySelector("#tweet-list");
   while (list.hasChildNodes()) {
     list.removeChild(list.lastChild);
   }
-  for (i = 0; i < currentUser.timeline.length; i++) {
-    var tweet = tweetElementCreator(currentUser.timeline[i]);
+  for (i = 0; i < user.timeline.length; i++) {
+    var tweet = tweetElementCreator(user.timeline[i]);
     list.appendChild(tweet);
   }
 }
